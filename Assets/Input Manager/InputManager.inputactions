@@ -1,0 +1,34 @@
+{
+    "name": "InputManager",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "a27655ab-f9d2-4cbf-ad4c-cf96d52b007a",
+            "actions": [
+                {
+                    "name": "BackButton",
+                    "type": "Button",
+                    "id": "917fa5d4-263a-43c9-bd19-724f2242b544",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ed23643f-fe4d-4ef9-b5ac-0f0077f096ce",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

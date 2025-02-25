@@ -17,6 +17,7 @@
 
             android:name="com.unity3d.player.UnityPlayerGameActivity"
             android:theme="@style/BaseUnityGameActivityTheme">
+            
 
             <intent-filter>
 
