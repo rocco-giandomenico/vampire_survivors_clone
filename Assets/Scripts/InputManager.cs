@@ -3,24 +3,39 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] private InputActionReference backAction;
+    [SerializeField] private TMPro.TextMeshProUGUI clickPosition;
+    [SerializeField] private int targetFPS = 60;
+
+    private PlayerInputActions playerInputActions;
 
     // -------------------------------------------------------------------------
     // FUNCTIONS
 
     void Awake() {
         DontDestroyOnLoad(gameObject);
+        playerInputActions = new PlayerInputActions();
+    }
+
+    private void Start() {
+        Application.targetFrameRate = targetFPS;
     }
 
     private void OnEnable() {
-        backAction.action.Enable();
-        backAction.action.performed += OnBackPressed;
+        playerInputActions.Enable();
+
+        playerInputActions.UI.BackButton.performed += OnBackPressed;
+        playerInputActions.UI.Touch.performed += OnTouchPerformed;
     }
 
     private void OnDisable() {
-        backAction.action.Disable();
-        backAction.action.performed -= OnBackPressed;
+        playerInputActions.Disable();
+
+        playerInputActions.UI.BackButton.performed -= OnBackPressed;
+        playerInputActions.UI.Touch.performed -= OnTouchPerformed;
     }
+
+    // -------------------------------------------------------------------------
+    // PUBLIC
 
     // -------------------------------------------------------------------------
     // PRIVATE
@@ -35,5 +50,11 @@ public class InputManager : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+    private void OnTouchPerformed(InputAction.CallbackContext context)
+    {
+        Vector2 touchPosition = context.ReadValue<Vector2>();
+        clickPosition.text = touchPosition.x.ToString() + "\n" + touchPosition.y.ToString();
     }
 }
