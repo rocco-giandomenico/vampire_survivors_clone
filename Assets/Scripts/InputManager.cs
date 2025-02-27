@@ -3,8 +3,9 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] private TMPro.TextMeshProUGUI clickPosition;
     [SerializeField] private int targetFPS = 60;
+
+    public Vector2 touchPosition;
 
     private PlayerInputActions playerInputActions;
 
@@ -52,9 +53,7 @@ public class InputManager : MonoBehaviour
         #endif
     }
 
-    private void OnTouchPerformed(InputAction.CallbackContext context)
-    {
-        Vector2 touchPosition = context.ReadValue<Vector2>();
-        clickPosition.text = touchPosition.x.ToString() + "\n" + touchPosition.y.ToString();
+    private void OnTouchPerformed(InputAction.CallbackContext context) {
+        touchPosition = context.ReadValue<Vector2>();
     }
 }
